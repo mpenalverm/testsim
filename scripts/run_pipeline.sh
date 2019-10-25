@@ -10,10 +10,15 @@
 #STAR --runThreadN 4 --runMode genomeGenerate --genomeDir res/genome/star_index/ --genomeFastaFiles res/genome/ecoli.fasta --genomeSAindexNbases 9
 #echo "...STAR index complete!"
 #echo
-echo "Starting Sample analysis"
+#echo "Starting Sample analysis"
 #Running the analyses for each sample ID
-for sid in $(ls data/*.fastq.gz | cut -d "_" -f1 | sed 's:data/::' | sort | uniq)
-do
-	bash scripts/analyse_sample.sh $sid
-done
-
+#for sid in $(ls data/*.fastq.gz | cut -d "_" -f1 | sed 's:data/::' | sort | uniq)
+#do
+#	bash scripts/analyse_sample.sh $sid
+#done
+#echo "Sample analysis complete"
+#echo
+#After all samples analysed, we do the Multiqc"
+echo "Preparing MultiQC report"
+multiqc -o out/multiqc $WD
+echo "MultiQC report generated and ready"
