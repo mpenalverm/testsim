@@ -14,6 +14,6 @@ echo "Starting Sample analysis"
 #Running the analyses for each sample ID
 for sid in $(ls data/*.fastq.gz | cut -d "_" -f1 | sed 's:data/::' | sort | uniq)
 do
-  echo $sid
+	bash scripts/analyse_sample.sh $sid
 done
 
